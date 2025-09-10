@@ -4,12 +4,16 @@ import cors from "cors";
 import authRoutes from "./router/auth.router.js";   // Auth routes
 import tweetRoutes from "./router/tweet.router.js"; // Tweet routes
 import connectDB from "./config/db.config.js";      // DB connection
+import contactRoutes from "./router/contact.router.js";
 
 const app = express();
 
-// Middleware
+// Middlewarecls
+
 app.use(express.json());
 app.use(cors());
+
+
 
 // Connect Database
 connectDB();
@@ -22,6 +26,7 @@ app.get("/", (req, res) => {
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/tweets", tweetRoutes);
+app.use("/api", contactRoutes);
 
 // Error handling (optional)
 app.use((req, res) => {

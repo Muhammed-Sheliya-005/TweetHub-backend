@@ -9,9 +9,14 @@ import contactRoutes from "./router/contact.router.js";
 const app = express();
 
 // Middlewarecls
+const corsOptions = {
+  origin: ["https://tweet-hub-fronted.vercel.app"],
+  credentials: true
+}
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
+
 // Connect Database
 connectDB();
 
